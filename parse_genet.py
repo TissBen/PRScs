@@ -34,10 +34,16 @@ def parse_ref(ref_file, chrom):
 
 
 def parse_bim(bim_file, chrom):
-    print('... parse bim file: %s ...' % (bim_file + '.bim'))
+    # Strip .bim if user accidentally included it
+    if bim_file.endswith('.bim'):
+        bim_file_path = bim_file
+    else:
+        bim_file_path = bim_file + '.bim'
+    print(f"... parse bim file: {bim_file_path} ...")
+#    print('... parse bim file: %s ...' % (bim_file + '.bim'))
 
     vld_dict = {'SNP':[], 'A1':[], 'A2':[]}
-    with open(bim_file + '.bim') as ff:
+    with open(bim_file_path) as ff:
         for line in ff:
             ll = (line.strip()).split()
             if int(ll[0]) == chrom:
@@ -192,5 +198,6 @@ def parse_ldblk(ldblk_dir, sst_dict, chrom):
             ld_blk[blk] = np.array([])
 
     return ld_blk, blk_size
+
 
 

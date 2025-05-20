@@ -108,7 +108,7 @@ def main():
         ld_blk, blk_size = parse_genet.parse_ldblk(param_dict['ref_dir'], sst_dict, int(chrom))
 
         mcmc_gtb.mcmc(param_dict['a'], param_dict['b'], param_dict['phi'], sst_dict, param_dict['n_gwas'], ld_blk, blk_size,
-            param_dict['n_iter'], param_dict['n_burnin'], param_dict['thin'], int(chrom), param_dict['out_dir'], param_dict['beta_std'],
+            param_dict['n_iter'], param_dict['n_burnin'], param_dict['thin'], str(chrom), param_dict['out_dir'], param_dict['beta_std'],
 	    param_dict['write_psi'], param_dict['write_pst'], param_dict['seed'])
 
         print('\n')
